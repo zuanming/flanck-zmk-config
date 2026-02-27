@@ -20,49 +20,18 @@
             , <&pro_micro_d 6 GPIO_ACTIVE_HIGH>
             , <&pro_micro_d 7 GPIO_ACTIVE_HIGH>
             , <&pro_micro_d 8 GPIO_ACTIVE_HIGH>
-            , <&pro_micro_d 9 GPIO_ACTIVE_HIGH>
-            ;
+            , <&pro_micro_d 9 GPIO_ACTIVE_HIGH>;
 
         row-gpios
             = <&pro_micro_a 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&pro_micro_a 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&pro_micro_a 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro_a 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            ;
+            , <&pro_micro_a 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
     };
+};
 
-    /* ZMK Studio support */
+/ {
     studio {
         compatible = "zmk,studio";
-        status = "okay";
-        
-        flanck_layout: flanck_layout {
-            display-name = "Flanck 48-key";
-            
-            width = <1200>;  // total width in centi-keyunits
-            height = <500>;  // total height
-            
-            keys = <
-                // Row 0 (12 keys, cols 0-11)
-                0 0 100 0    110 0 100 0    230 0 100 0    350 0 100 0
-                470 0 100 0  590 0 100 0    710 0 100 0    830 0 100 0
-                950 0 100 0 1070 0 100 0
-                
-                // Row 1 (y=120)
-                0 120 100 0  110 120 100 0  230 120 100 0  350 120 100 0
-                470 120 100 0 590 120 100 0 710 120 100 0  830 120 100 0
-                950 120 100 0 1070 120 100 0
-                
-                // Row 2 (y=240)
-                0 240 100 0  110 240 100 0  230 240 100 0  350 240 100 0
-                470 240 100 0 590 240 100 0 710 240 100 0  830 240 100 0
-                950 240 100 0 1070 240 100 0
-                
-                // Row 3 (y=360)
-                0 360 100 0  110 360 100 0  230 360 100 0  350 360 100 0
-                470 360 100 0 590 360 100 0 710 360 100 0  830 360 100 0
-                950 360 100 0 1070 360 100 0
-            >;
-        };
     };
 };
