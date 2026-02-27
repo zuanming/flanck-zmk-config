@@ -1,78 +1,68 @@
 / {
-  chosen {
-      zmk,kscan = &kscan0;
-  };
+    chosen {
+        zmk,kscan = &kscan0;
+    };
 
-  kscan0: kscan_0 {
-      compatible = "zmk,kscan-gpio-matrix";
-      label = "KSCAN";
-      diode-direction = "col2row";
+    kscan0: kscan_0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN";
+        diode-direction = "col2row";
 
-      col-gpios
-          = <&pro_micro_d 15 GPIO_ACTIVE_HIGH>
-          , <&pro_micro_d 14 GPIO_ACTIVE_HIGH>
-          , <&pro_micro_d 16 GPIO_ACTIVE_HIGH>
-          , <&pro_micro_d 10 GPIO_ACTIVE_HIGH>
-          , <&pro_micro_d 1 GPIO_ACTIVE_HIGH>
-          , <&pro_micro_d 0 GPIO_ACTIVE_HIGH>
-          , <&pro_micro_d 4 GPIO_ACTIVE_HIGH>
-          , <&pro_micro_d 5 GPIO_ACTIVE_HIGH>
-          , <&pro_micro_d 6 GPIO_ACTIVE_HIGH>
-          , <&pro_micro_d 7 GPIO_ACTIVE_HIGH>
-          , <&pro_micro_d 8 GPIO_ACTIVE_HIGH>
-          , <&pro_micro_d 9 GPIO_ACTIVE_HIGH>
-          ;
+        col-gpios
+            = <&pro_micro_d 15 GPIO_ACTIVE_HIGH>
+            , <&pro_micro_d 14 GPIO_ACTIVE_HIGH>
+            , <&pro_micro_d 16 GPIO_ACTIVE_HIGH>
+            , <&pro_micro_d 10 GPIO_ACTIVE_HIGH>
+            , <&pro_micro_d 1 GPIO_ACTIVE_HIGH>
+            , <&pro_micro_d 0 GPIO_ACTIVE_HIGH>
+            , <&pro_micro_d 4 GPIO_ACTIVE_HIGH>
+            , <&pro_micro_d 5 GPIO_ACTIVE_HIGH>
+            , <&pro_micro_d 6 GPIO_ACTIVE_HIGH>
+            , <&pro_micro_d 7 GPIO_ACTIVE_HIGH>
+            , <&pro_micro_d 8 GPIO_ACTIVE_HIGH>
+            , <&pro_micro_d 9 GPIO_ACTIVE_HIGH>
+            ;
 
-      row-gpios
-          = <&pro_micro_a 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-          , <&pro_micro_a 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-          , <&pro_micro_a 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-          , <&pro_micro_a 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-          ;
-  };
+        row-gpios
+            = <&pro_micro_a 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro_a 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro_a 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro_a 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+    };
 
-  /* ZMK STUDIO - REQUIRED for physical_layouts.c to compile */
-  studio {
-      compatible = "zmk,studio";
-      status = "okay";
-      
-      flanck_layout: flanck_layout {
-          display-name = "Flanck 48-key";
-          
-          keys = <
-              // Row 0 (COL0-11): standard 1.0u keys
-              &kp 100 100 0 0 0 50 50    &kp 100 100 100 0 0 150 50
-              &kp 100 100 200 0 0 250 50  &kp 100 100 300 0 0 350 50
-              &kp 100 100 400 0 0 450 50  &kp 100 100 500 0 0 550 50
-              &kp 100 100 600 0 0 650 50  &kp 100 100 700 0 0 750 50
-              &kp 100 100 800 0 0 850 50  &kp 100 100 900 0 0 950 50
-              
-              // Row 1
-              &kp 100 100 0 100 0 50 150  &kp 100 100 100 100 0 150 150
-              &kp 100 100 200 100 0 250 150 &kp 100 100 300 100 0 350 150
-              &kp 100 100 400 100 0 450 150 &kp 100 100 500 100 0 550 150
-              &kp 100 100 600 100 0 650 150 &kp 100 100 700 100 0 750 150
-              &kp 100 100 800 100 0 850 150 &kp 100 100 900 100 0 950 150
-              
-              // Row 2  
-              &kp 100 100 0 200 0 50 250  &kp 100 100 100 200 0 150 250
-              &kp 100 100 200 200 0 250 250 &kp 100 100 300 200 0 350 250
-              &kp 100 100 400 200 0 450 250 &kp 100 100 500 200 0 550 250
-              &kp 100 100 600 200 0 650 250 &kp 100 100 700 200 0 750 250
-              &kp 100 100 800 200 0 850 250 &kp 100 100 900 200 0 950 250
-              
-              // Row 3
-              &kp 100 100 0 300 0 50 350  &kp 100 100 100 300 0 150 350
-              &kp 100 100 200 300 0 250 350 &kp 100 100 300 300 0 350 350
-              &kp 100 100 400 300 0 450 350 &kp 100 100 500 300 0 550 350
-              &kp 100 100 600 300 0 650 350 &kp 100 100 700 300 0 750 350
-              &kp 100 100 800 300 0 850 350 &kp 100 100 900 300 0 950 350
-          >;
-      };
-  };
-};
-
-&kp: key_physical_attrs {
-    width = <100>;    // 1.0u = 100 centi-keyunits
-    height = <100>;
+    /* ZMK Studio support */
+    studio {
+        compatible = "zmk,studio";
+        status = "okay";
+        
+        flanck_layout: flanck_layout {
+            display-name = "Flanck 48-key";
+            
+            width = <1200>;  // total width in centi-keyunits
+            height = <500>;  // total height
+            
+            keys = <
+                // Row 0 (12 keys, cols 0-11)
+                0 0 100 0    110 0 100 0    230 0 100 0    350 0 100 0
+                470 0 100 0  590 0 100 0    710 0 100 0    830 0 100 0
+                950 0 100 0 1070 0 100 0
+                
+                // Row 1 (y=120)
+                0 120 100 0  110 120 100 0  230 120 100 0  350 120 100 0
+                470 120 100 0 590 120 100 0 710 120 100 0  830 120 100 0
+                950 120 100 0 1070 120 100 0
+                
+                // Row 2 (y=240)
+                0 240 100 0  110 240 100 0  230 240 100 0  350 240 100 0
+                470 240 100 0 590 240 100 0 710 240 100 0  830 240 100 0
+                950 240 100 0 1070 240 100 0
+                
+                // Row 3 (y=360)
+                0 360 100 0  110 360 100 0  230 360 100 0  350 360 100 0
+                470 360 100 0 590 360 100 0 710 360 100 0  830 360 100 0
+                950 360 100 0 1070 360 100 0
+            >;
+        };
+    };
 };
